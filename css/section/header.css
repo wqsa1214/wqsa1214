@@ -1,0 +1,128 @@
+@charset "utf-8";
+#header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+.header_inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(116,99,99,0.1);
+    backdrop-filter: blur(15px);
+    padding: 16px;
+}
+.header_logo{
+    font-size: 15px;
+    line-height: 1;
+    text-align: center;
+}
+.header_logo em{
+    display: block;
+    font-size: 13px;
+    color: var(--black200);
+}
+
+.header_nav{}
+.header_nav ul{}
+.header_nav ul li{
+    display: inline;
+}
+.header_nav ul li a{
+    padding: 14px;
+    font-size: 14px;
+    text-transform: uppercase;
+    position: relative;
+}
+.header_nav ul li a::before{
+    content: "";
+    width: calc(100% - 28px);
+    height: 1px;
+    background-color: var(--black);
+    position: absolute;
+    left: 14px;
+    bottom: 10px;
+    transform: scaleX(0);
+    transition:transform 0.3s;
+}
+.header_nav ul li a:hover::before{
+    transform: scaleX(1);
+}
+
+.header_nav_mobile{
+    display: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    /* background-color: #554e4e; */
+}
+.header_nav_mobile span{
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: var(--black);
+    margin-top: 19px;
+    position: relative;
+}
+.header_nav_mobile span::before{
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: var(--black);
+    position: absolute;
+    top: 6px;
+    right: 0;
+    transition: all 0.3s;
+}
+.header_nav_mobile span::after{
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: var(--black);
+    position: absolute;
+    left: 0;
+    bottom: 6px;
+    transition: all 0.3s;
+}
+
+@media(max-width:800px){
+    .header_nav{
+        display: none;
+    }
+    .header_nav.show{
+        display: block;
+    }
+    .header_nav.show ul{
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 68px;
+        background-color: rgba(116, 99, 99, 0.1);
+        backdrop-filter: blur(15px);
+        z-index: 999;
+        width: 150px;
+        padding: 20px 0;
+    }
+    .header_nav.show ul li{
+        display: block;
+        text-align: right;
+    }
+    .header_nav.show ul li a{
+        display: inline-block;
+        padding: 10px;
+    }
+    .header_nav.show + .header_nav_mobile span::after{
+        width: 20px;
+    }
+    .header_nav.show + .header_nav_mobile span::before{
+        width: 20px;
+    }
+
+
+
+    .header_nav_mobile{
+        display: block;
+    }
+}
